@@ -1,6 +1,15 @@
 <?php
+    // utils
+    require_once 'bdd.php';
+    // models
+    //require_once 'models/oeuvres.php';
+    //repositories
+    require_once 'repositories/oeuvresRepository.php';
+    
+    $oeuvresRepository = new OeuvresRepository($mybdd);
+    $oeuvres = $oeuvresRepository->getAllOeuvres();
+
     require 'header.php';
-    require 'oeuvres.php';
 ?>
 <div id="liste-oeuvres">
     <?php foreach($oeuvres as $oeuvre): ?>
