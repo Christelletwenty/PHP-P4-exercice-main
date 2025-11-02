@@ -26,5 +26,18 @@ class OeuvresRepository {
         $getOeuvresStatement->execute(['oeuvreId' => $id]);
         return $getOeuvresStatement->fetch();
     }
+
+    //Ajout d'une oeuvre
+    public function addOeuvre(Oeuvres $oeuvre) {
+        $getOeuvresRequest = 'INSERT INTO `oeuvres` (titre, artiste, description, image) VALUES (:titre, :artiste, :description, :image)';
+
+        $getOeuvresStatement = $this->db->prepare($getOeuvresRequest);
+        $getOeuvresStatement->execute([
+            'titre' => $oeuvre->getTitre(),
+            'artiste' => $oeuvre->getArtiste(),
+            'description' => $oeuvre->getDescription(),
+            'image' => $oeuvre->getImage(),
+        ]);
+    }
 }
 ?>
