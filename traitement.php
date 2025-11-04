@@ -32,11 +32,16 @@ if(
     require 'models/oeuvres.php';
     require 'repositories/oeuvresRepository.php';
     //Création de l'objet oeuvre
-    $oeuvre = new Oeuvres();
-    $oeuvre->setTitre($postData['titre']);
-    $oeuvre->setArtiste($postData['artiste']);
-    $oeuvre->setImage($postData['image']);
-    $oeuvre->setDescription($postData['description']);
+    // $oeuvre = new Oeuvres();
+    // $oeuvre->setTitre($postData['titre']);
+    // $oeuvre->setArtiste($postData['artiste']);
+    // $oeuvre->setImage($postData['image']);
+    // $oeuvre->setDescription($postData['description']);
+    $oeuvre = [];
+    $oeuvre['titre'] = $postData['titre'];
+    $oeuvre['artiste'] = $postData['artiste'];
+    $oeuvre['image'] = $postData['image'];
+    $oeuvre['description'] = $postData['description'];
     //Ajout de l'oeuvre en base de donnée
     $oeuvresRepository = new OeuvresRepository($mybdd);
     $oeuvresRepository->addOeuvre($oeuvre);

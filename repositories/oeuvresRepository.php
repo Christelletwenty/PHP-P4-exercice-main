@@ -28,15 +28,27 @@ class OeuvresRepository {
     }
 
     //Ajout d'une oeuvre
-    public function addOeuvre(Oeuvres $oeuvre) {
+    // public function addOeuvre(Oeuvres $oeuvre) {
+    //     $getOeuvresRequest = 'INSERT INTO `oeuvres` (titre, artiste, description, image) VALUES (:titre, :artiste, :description, :image)';
+
+    //     $getOeuvresStatement = $this->db->prepare($getOeuvresRequest);
+    //     $getOeuvresStatement->execute([
+    //         'titre' => $oeuvre->getTitre(),
+    //         'artiste' => $oeuvre->getArtiste(),
+    //         'description' => $oeuvre->getDescription(),
+    //         'image' => $oeuvre->getImage(),
+    //     ]);
+    // }
+
+    public function addOeuvre($oeuvre) {
         $getOeuvresRequest = 'INSERT INTO `oeuvres` (titre, artiste, description, image) VALUES (:titre, :artiste, :description, :image)';
 
         $getOeuvresStatement = $this->db->prepare($getOeuvresRequest);
         $getOeuvresStatement->execute([
-            'titre' => $oeuvre->getTitre(),
-            'artiste' => $oeuvre->getArtiste(),
-            'description' => $oeuvre->getDescription(),
-            'image' => $oeuvre->getImage(),
+            'titre' => $oeuvre['titre'],
+            'artiste' => $oeuvre['artiste'],
+            'description' => $oeuvre['description'],
+            'image' => $oeuvre['image'],
         ]);
     }
 }
